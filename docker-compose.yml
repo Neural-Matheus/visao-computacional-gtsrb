@@ -1,0 +1,26 @@
+services:
+  gtsrb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    image: gtsrb-vc:latest
+    container_name: gtsrb
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-changeme}
+      PYTHONHASHSEED: "42"
+    network_mode: host
+    volumes:
+      - ./:/workspace
+      - ./data:/workspace/data
+    shm_size: "8gb"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+    stdin_open: true
+    tty: true

@@ -1,0 +1,18 @@
+# Dataset (grande demais para o GitHub — baixar localmente)
+data/
+
+# Caches Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Config local do editor / Claude
+.claude/
+.vscode/
+.idea/
+
+# SO
+.DS_Store
